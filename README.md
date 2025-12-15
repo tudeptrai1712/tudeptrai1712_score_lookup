@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**Score Lookup**
 
-## Getting Started
+This project is a small, static web application built with plain HTML, CSS, and JavaScript. It is currently served from the `public/` folder (`public/index.html`, `script.js`, `style.css`).
 
-First, run the development server:
+**License — GPLv3+ (proudly)**
+
+This project is licensed under the GNU General Public License version 3 or later (GPL-3.0+). We choose GPLv3+ to ensure that the software — and any derivatives — remain free to use, study, modify, and share. See the `LICENSE` file for the full license text.
+
+**Made with AI through human collaboration**
+
+Parts of this project were authored with assistance from AI and reviewed, curated, and integrated by humans. The human contributors retain authorship and responsibility for the final content and behavior of the project.
+
+**Quick Start**
+
+- Open `public/index.html` in your browser to run the app locally.
+- Or serve the project with a simple static server, for example:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+python3 -m http.server 8000
+# then open http://localhost:8000/public/index.html
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+or
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx serve public
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Status & Notes**
 
-## Learn More
+- The project is currently static (HTML/CSS/JS). Some Next.js files/configs remained from the original scaffold but the running site is static unless you run a Next.js server.
+- If you want this repository to be a pure static project (remove Next.js scripts and deps), open an issue or request and I can help tidy `package.json` and configs.
 
-To learn more about Next.js, take a look at the following resources:
+**Contributing**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are welcome. By contributing you agree to license your changes under GPLv3+ as well. See `LICENSE` for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Contact**
 
-## Deploy on Vercel
+If you have questions or want help converting this to a different setup, open an issue or create a pull request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Made with care — humans + AI.
