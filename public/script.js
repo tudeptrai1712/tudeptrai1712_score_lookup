@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     D66: ['Văn','NN','GDKT&PL']
   };
 
-  fetch('../public/data/điểm khối 12.jsonl')
+  fetch('data/điểm khối 12.jsonl')
     .then(r => r.text())
     .then(text => {
       studentData = text.trim().split('\n').map(l => JSON.parse(l));
