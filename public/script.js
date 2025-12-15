@@ -7,6 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return value;
   }
+
+  function lower_bound(arr, value) {
+    let low = 0;
+    let high = arr.length;
+    while (low < high) {
+        const mid = Math.floor((low + high) / 2);
+        if (arr[mid] < value) {
+            low = mid + 1;
+        } else {
+            high = mid;
+        }
+    }
+    return low;
+  }
   const searchBtn = document.getElementById('search-btn');
   const sbdInput = document.getElementById('sbd-input');
   const resultContainer = document.getElementById('result-container');
@@ -59,11 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
           .filter(v => Number.isFinite(v));
         if (!scores.length) return;
         allScores[k] = [...scores].sort((a,b)=>a-b);
-        if (k === 'TB') {
-          subjectStats[k] = {};
-        } else {
-          subjectStats[k] = { avg: round2(scores.reduce((a,b)=>a+b,0)/scores.length) };
-        }
+        subjectStats[k] = { avg: round2(scores.reduce((a,b)=>a+b,0)/scores.length) };
       });
     });
 
@@ -79,14 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let html = '<h2>Thông tin thí sinh</h2><div class="card">';
 
     for (const k in s) {
-      if (['A00','A01','B00','C00','C01','C02','D01','D07','D09','D14','D15','D66'].includes(k)) continue;
+      if (k in combinations) continue;
       if (s[k] == null) continue;
 
       let pct = '', avg = '';
       if (allScores[k]) {
         const sVal = Number(s[k]);
-        const c = allScores[k].filter(v => v <= sVal).length;
-        pct = Math.round((c / allScores[k].length) * 100) + 'th';
+        const n = allScores[k].length;
+          const c = lower_bound(allScores[k], sVal);
+        const rank = n > 1 ? c / (n - 1) : 1;
+        pct = Math.round(rank * 100) + 'th';
         avg = subjectStats[k]?.avg != null ? `avg ${round2(subjectStats[k].avg).toFixed(2)}` : '';
       }
 
@@ -103,8 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const k in combinations) {
       if (s[k] == null) continue;
       const sVal = Number(s[k]);
-      const c = allScores[k].filter(v => v <= sVal).length;
-      const pct = Math.round((c / allScores[k].length) * 100) + 'th';
+      const n = allScores[k].length;
+        const c = lower_bound(allScores[k], sVal);
+      const rank = n > 1 ? c / (n - 1) : 1;
+      const pct = Math.round(rank * 100) + 'th';
       const avg = subjectStats[k]?.avg != null ? `avg ${round2(subjectStats[k].avg).toFixed(2)}` : '';
 
       html += `
@@ -116,6 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     html += '</div>';
+
+    html += `<div style="margin-top: 20px; font-size: 0.9em; color: #666;">
+      <p><b>Note:</b> All calculations are performed directly in your browser from a static data file; no backend server is used.</p>
+      <p>Percentile ranks are calculated using a method equivalent to Excel's <code>PERCENTRANK.INC</code> formula.</p>
+      <p><b>How to read percentile:</b> A percentile of <b>75th</b> means the student scored higher than 75% of other students.</p>
+    </div>`;
+
     resultContainer.innerHTML = html;
   };
 });
