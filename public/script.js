@@ -30,19 +30,31 @@ document.addEventListener('DOMContentLoaded', () => {
   let subjectStats = {};
 
   const combinations = {
-    A00: ['Toán','Lí','Hóa'],
-    A01: ['Toán','Lí','NN'],
-    B00: ['Toán','Hóa','Sinh'],
-    C00: ['Văn','Sử','Địa'],
-    C01: ['Văn','Toán','Lí'],
-    C02: ['Văn','Toán','Hóa'],
-    D01: ['Văn','Toán','NN'],
-    D07: ['Toán','Hóa','NN'],
-    D09: ['Toán','NN','Sử'],
-    D14: ['Văn','NN','Sử'],
-    D15: ['Văn','NN','Địa'],
-    D66: ['Văn','NN','GDKT&PL']
+  // Your existing core combos
+  A00: ['Toán','Lí','Hóa'],
+  A01: ['Toán','Lí','NN'],
+  B00: ['Toán','Hóa','Sinh'],
+  C00: ['Văn','Sử','Địa'],
+  C01: ['Văn','Toán','Lí'],
+  C02: ['Văn','Toán','Hóa'],
+  D01: ['Văn','Toán','NN'],
+  D07: ['Toán','Hóa','NN'],
+  D09: ['Toán','NN','Sử'],
+  D14: ['Văn','NN','Sử'],
+  D15: ['Văn','NN','Địa'],
+  D66: ['Văn','NN','GDKT&PL'],
+
+  // More English-inclusive combos
+  D08: ['Toán','Sinh','NN'],       // math + biology + English :contentReference[oaicite:1]{index=1}
+  D10: ['Toán','Địa','NN'],        // math + geography + English :contentReference[oaicite:2]{index=2}
+  D11: ['Văn','Lí','NN'],          // literature + physics + English :contentReference[oaicite:3]{index=3}
+  D12: ['Văn','Hóa','NN'],         // literature + chemistry + English :contentReference[oaicite:4]{index=4}
+  D13: ['Văn','Sinh','NN'],        // literature + biology + English :contentReference[oaicite:5]{index=5}
+
+  // GDKT&PL combos with English
+  D84: ['Toán','GDKT&PL','NN'],     // toan + GDKT&PL + English :contentReference[oaicite:6]{index=6}
   };
+
 
   fetch('data/điểm khối 12.jsonl')
     .then(r => r.text())
