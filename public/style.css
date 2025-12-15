@@ -1,63 +1,88 @@
+* { box-sizing: border-box; }
+
 body {
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f4f4f4;
-    margin: 0;
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  background: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: #0f172a;
 }
 
 .container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
+  width: 100%;
+  max-width: 760px;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin: 2.5rem 0 1rem;
+  font-size: 1.25rem;
 }
 
 .search-container {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
 }
 
 #sbd-input {
-    flex-grow: 1;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  flex: 1;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #cbd5f5;
 }
 
 #search-btn {
-    padding: 0.5rem 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 0.8rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-#result-container ul {
-    list-style-type: none;
-    padding: 0;
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
-#result-container li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
+.row {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-#result-container li:last-child {
-    border-bottom: none;
+.row:last-child { border-bottom: none; }
+
+.label { font-weight: 600; }
+
+.value { font-size: 1rem; }
+
+.meta {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #475569;
 }
 
-#result-container strong {
-    margin-right: 0.5rem;
+.pct {
+  display: block;
+  font-weight: 600;
+  color: #2563eb;
 }
+
+.avg { opacity: 0.8; }
