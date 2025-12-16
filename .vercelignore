@@ -1,2 +1,0 @@
-# Ignore legacy public assets; do not exclude the Unicode dataset needed for full DB access
-public/
